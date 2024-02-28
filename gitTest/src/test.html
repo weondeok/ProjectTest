@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+  </head>
+<body>
+    <!------ Include the above in your HEAD tag ---------->   
+    <div class="container">
+        <div class="row">    
+            <div class="col-lg-2">
+                    <div class="input-group">
+                        <span class="input-group-btn">
+                            <button type="button" class="quantity-left-minus btn btn-danger btn-number"  data-type="minus" data-filed="">
+                                <span class="glyphicon glyphicon-minus"></span>
+                            </button>
+                        </span>
+                        <input type="text" id="quantity" name="quantity" class="form-control input-number" value="0" min="1" max="100">
+                        <span class="input-group-btn">
+                            <button type="button" class="quantity-right-plus btn btn-success btn-number" data-type="plus" data-filed="">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </button>
+                        </span> 
+                        <span><h3 id="totalAccout">0</h3></span>                       
+                    </div>
+            </div>
+        </div>
+    </div> 
+<script>
+$(document).ready(function(){
+var quantitiy=0;
+   $('.quantity-right-plus').click(function(e){
+        e.preventDefault();
+        var quantity = parseInt($('#quantity').val()); 
+        quantitiy = quantity + 1;           
+        $('#quantity').val(quantitiy); 
+        var price = parseInt($('#price').val());    
+        var total = quantitiy * price;
+        $('#totalAccout').text(total);
+    });
+
+     $('.quantity-left-minus').click(function(e){
+        e.preventDefault();
+        var quantity = parseInt($('#quantity').val());
+            if(quantity>0){
+                quantitiy = quantity - 1;           
+                $('#quantity').val(quantitiy); 
+            }
+        var price = parseInt($('#price').val());    
+        var total = quantitiy * price;
+        $('#totalAccout').text(total);
+    });
+});
+
+</script>   
+</body>
+</html>
+
